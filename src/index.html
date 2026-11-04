@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpdesk</title>
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <main class="container py-4">
+        <h1 class="mb-4">Helpdesk</h1>
+        <div class="row g-4">
+            <section class="col-12 col-lg-4" aria-labelledby="newTicketHeading">
+                <h2 id="newTicketHeading" class="h4 mb-3">Nowe zgłoszenie</h2>
+                <form id="ticketForm" novalidate>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Tytuł zgłoszenia:</label>
+                        <input type="text" class="form-control" placeholder="Nazwa" name="title" id="title" aria-describedby="formMessage" minlength="3" required>
+                    </div>
+                    <fieldset class="mb-3">
+                        <legend class="fs-6">Priorytet:</legend>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="Priorytet" id="NiskiPriorytet" value="low" class="form-check-input">
+                            <label for="NiskiPriorytet" class="form-check-label">Niski</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="Priorytet" id="ŚredniPriorytet" value="normal" checked class="form-check-input">
+                            <label for="ŚredniPriorytet" class="form-check-label">Średni</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" name="Priorytet" id="WysokiPriorytet" value="high" class="form-check-input">
+                            <label for="WysokiPriorytet" class="form-check-label">Wysoki</label>
+                        </div>
+                    </fieldset>
+                    <button type="submit" id="add" class="btn btn-primary">Dodaj zgłoszenie</button>
+                    <p id="formMessage" role="status" class="small mt-3 mb-0"></p>
+                </form>
+            </section>
+            <section class="col-12 col-lg-8" aria-labelledby="ticketListHeading">
+                <h2 id="ticketListHeading" class="h4 mb-3">Zgłoszenia</h2>
+                <div class="row align-items-center g-2 mb-3">
+                    <fieldset id="statusFilter" class="col-12 mb-2">
+                        <legend class="fs-6 mb-1">Filtr statusu:</legend>
+                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="filterNew" value="new" checked><label class="form-check-label" for="filterNew">Nowe</label></div>
+                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="filterDoing" value="doing" checked><label class="form-check-label" for="filterDoing">W Realizacji</label></div>
+                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="filterTesting" value="testing" checked><label class="form-check-label" for="filterTesting">W Testach</label></div>
+                        <div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" id="filterDone" value="done" checked><label class="form-check-label" for="filterDone">Ukończone</label></div>
+                    </fieldset>
+                    <div class="col-auto"><label for="prioritySorter" class="col-form-label">Sortuj priorytet:</label></div>
+                    <div class="col-12 col-sm-auto">
+                        <select id="prioritySorter" class="form-select">
+                            <option value="none">Brak</option>
+                            <option value="htl">Wysoki do Niski</option>
+                            <option value="lth">Niski do Wysoki</option>
+                        </select>
+                    </div>
+                </div>
+                <p id="ticketCounter" class="text-body-secondary small">Widoczne: 0 / Wszystkie: 0</p>
+                <p id="emptyMessage" class="text-body-secondary"></p>
+                <ul id="ticketList" class="list-group"></ul>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
