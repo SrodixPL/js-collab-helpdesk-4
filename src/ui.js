@@ -1,5 +1,3 @@
-// ui logic
-
 export async function renderTickets() {
     const selectedStatuses = new Set([...filter.querySelectorAll('input:checked')].map(input => input.value));
     const visible = tickets

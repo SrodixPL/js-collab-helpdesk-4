@@ -1,12 +1,3 @@
-
-
-const priorities = ["low", "normal", "high"];
-const statuses = ["new", "doing", "testing", "done"];
-const priorityLabels = { low: "Niski", normal: "Średni", high: "Wysoki" };
-const statusLabels = { new: "Nowe", doing: "W Realizacji", testing: "W Testach", done: "Ukończone" };
-let tickets = [];
-let nextId = 1;
-
 function addTicket(currentTickets, ticket) {
     if (typeof ticket.id !== "string" || !ticket.id.trim() || ticket.id.length > 100 ||
         currentTickets.some(item => item.id === ticket.id)) {
@@ -31,18 +22,6 @@ function changeStatus(currentTickets, id, status) {
 function deleteTicket(currentTickets, id) {
     return currentTickets.filter(ticket => ticket.id !== id);
 }
-
-const form = document.querySelector("#ticketForm");
-const titleInput = document.querySelector("#title");
-const formMessage = document.querySelector("#formMessage");
-const filter = document.querySelector("#statusFilter");
-const sort = document.querySelector("#prioritySorter");
-const list = document.querySelector("#ticketList");
-const counter = document.querySelector("#ticketCounter");
-const emptyMessage = document.querySelector("#emptyMessage");
-
-
-
 form.addEventListener("submit", event => {
     event.preventDefault();
     const priority = form.querySelector('input[name="Priorytet"]:checked');
