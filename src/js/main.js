@@ -38,7 +38,8 @@ form.addEventListener("submit", event => {
 });
 filter.addEventListener("change", renderTickets);
 sort.addEventListener("change", renderTickets)
-renderTickets();
+
+await renderTickets();
 
 window.addEventListener("pageshow", event => {
     if (event.persisted) return;
