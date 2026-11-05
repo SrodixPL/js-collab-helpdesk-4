@@ -1,3 +1,7 @@
+import { renderTickets } from "./ui";
+import { createTicketRow } from "./ui";
+
+
 function addTicket(currentTickets, ticket) {
     if (typeof ticket.id !== "string" || !ticket.id.trim() || ticket.id.length > 100 ||
         currentTickets.some(item => item.id === ticket.id)) {
