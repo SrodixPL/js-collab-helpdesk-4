@@ -1,6 +1,3 @@
-import { addTicket } from "./tickets";
-import { renderTickets, createTicketRow } from "./ui";
-
 const priorities = ["low", "normal", "high"];
 const statuses = ["new", "doing", "testing", "done"];
 const priorityLabels = { low: "Niski", normal: "Średni", high: "Wysoki" };
