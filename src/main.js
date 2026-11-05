@@ -41,56 +41,7 @@ const list = document.querySelector("#ticketList");
 const counter = document.querySelector("#ticketCounter");
 const emptyMessage = document.querySelector("#emptyMessage");
 
-function createTicketRow(ticket) {
-    const row = document.createElement("li");
-    row.className = "list-group-item";
 
-    const header = document.createElement("div");
-    header.className = "d-flex justify-content-between align-items-center gap-3 mb-2";
-
-    const description = document.createElement("span");
-    description.className = "text-break";
-    description.textContent = `#${ticket.id} — ${ticket.title} | Priorytet: ${priorityLabels[ticket.priority]}`;
-
-    const delbtn = document.createElement("button");
-    delbtn.className = "btn btn-danger flex-shrink-0";
-    delbtn.textContent = "Usuń";
-    delbtn.addEventListener("click", () => {
-        tickets = deleteTicket(tickets, ticket.id);
-        renderTickets();
-    });
-
-    header.append(description, delbtn);
-
-    const label = document.createElement("label");
-    label.className = "d-block";
-    label.textContent = "Status: ";
-
-    const select = document.createElement("select");
-    select.className = "form-select form-select-sm mt-1";
-    select.setAttribute("aria-label", `Status zgłoszenia ${ticket.id}: ${ticket.title}`);
-
-    for (const status of statuses) {
-        const option = document.createElement("option");
-        option.value = status;
-        option.textContent = statusLabels[status];
-        select.append(option);
-    }
-
-    select.value = ticket.status;
-
-    select.addEventListener("change", () => {
-        tickets = changeStatus(tickets, ticket.id, select.value);
-        renderTickets();
-        filter.querySelector("input").focus();
-        formMessage.textContent = `Zmieniono status zgłoszenia #${ticket.id}.`;
-    });
-
-    label.append(select);
-    row.append(header, label);
-
-    return row;
-}
 
 form.addEventListener("submit", event => {
     event.preventDefault();
